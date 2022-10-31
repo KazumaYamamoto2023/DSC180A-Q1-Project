@@ -1,0 +1,14 @@
+S. Greene and P. Resnik. 2009. More than words: Syn- tactic packaging and implicit sentiment. In NAACL.
+https://aclanthology.org/N09-1057.pdf
+
+Shirui Pan, Jia Wu, Xingquan Zhu, Chengqi Zhang, and Yang Wang. 2016. Tri-party deep network representation.
+https://www.ijcai.org/Proceedings/16/Papers/271.pdf
+
+Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. 2014. Deepwalk: Online learning of social representations. In KDD.
+https://arxiv.org/pdf/1403.6652.pdf
+
+Yi Yang, Ming-Wei Chang, and Jacob Eisenstein. 2016a. Toward socially-infused information extraction: Embedding authors, mentions, and entities. In Proceedings of the 2016 Conference on Empiri- cal Methods in Natural Language Processing, pages 1452–1461.
+https://arxiv.org/pdf/1609.08084.pdf
+
+Daniel Xiaodan Zhou, Paul Resnick, and Qiaozhu Mei. 2011. Classifying the political leaning of news articles and users from user votes. In Proceedings of ICWSM.
+http://www-personal.umich.edu/~qmei/pub/icwsm2011-zhou.pdf
