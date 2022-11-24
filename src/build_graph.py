@@ -27,12 +27,14 @@ def build(dataset):
     doc_name_list = []
     doc_train_list = []
     doc_test_list = []
+    doc_to_y = {}
 
     f = open('data/' + dataset + '.txt', 'r')
     lines = f.readlines()
     for line in lines:
         doc_name_list.append(line.strip())
         temp = line.split("\t")
+        doc_to_y[int(temp[0])]=temp[2]
         if temp[1].find('test') != -1:
             doc_test_list.append(line.strip())
         elif temp[1].find('train') != -1:
@@ -493,12 +495,16 @@ def build(dataset):
     skip = True
     nodes = []
     edges = []
-    for item in weighted_edges:
+    for item in weight:
         skip = not skip
         if skip:
             continue
-        if not ([item[1]] in nodes):
-            nodes.append([item[1]])
+        if type(item[1])==int:
+            if not ([item[1],doc_to_y[item[1]]] in nodes):
+                nodes.append([item[1],doc_to_y[item[1]]])
+        else:
+            if not ([item[1]] in nodes):
+                nodes.append([item[1]])
         edges.append([item[1],item[2],item[0]])
     
     with open("data/output/"+dataset+"_nodes.csv", "w", newline="") as f:
