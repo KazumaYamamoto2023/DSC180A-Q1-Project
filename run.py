@@ -7,7 +7,7 @@ def main():
     if len(sys.argv) != 2:
 	    sys.exit("Use: python run.py <dataset>")
 
-    datasets = ['20ng', 'R8', 'R52', 'ohsumed', 'mr', 'clickbait']
+    datasets = ['20ng', 'R8', 'R52', 'ohsumed', 'mr', 'clickbait', 'test']
     dataset = sys.argv[1]
 
     if dataset not in datasets:
