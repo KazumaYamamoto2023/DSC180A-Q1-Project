@@ -11,6 +11,7 @@ from nltk.corpus import wordnet as wn
 from sklearn.feature_extraction.text import TfidfVectorizer
 import sys
 from scipy.spatial.distance import cosine
+import csv
 
 # Read Word Vectors
 # word_vector_file = 'data/glove.6B/glove.6B.300d.txt'
@@ -134,6 +135,8 @@ def build(dataset):
     word_id_map = {}
     for i in range(vocab_size):
         word_id_map[vocab[i]] = i
+        
+    id_word_map = inv_map = {v: k for k, v in word_id_map.items()}
 
     vocab_str = '\n'.join(vocab)
 
@@ -411,6 +414,7 @@ def build(dataset):
     row = []
     col = []
     weight = []
+    weighted_edges = []
 
     # pmi as weights
 
@@ -430,6 +434,7 @@ def build(dataset):
         row.append(train_size + i)
         col.append(train_size + j)
         weight.append(pmi)
+        weighted_edges.append([pmi,id_word_map[i],id_word_map[j]])
 
     # word vector cosine similarity as weights
 
@@ -478,11 +483,31 @@ def build(dataset):
             idf = log(1.0 * len(shuffle_doc_words_list) /
                     word_doc_freq[vocab[j]])
             weight.append(freq * idf)
+            weighted_edges.append([freq * idf, i, word])
             doc_word_set.add(word)
 
     node_size = train_size + vocab_size + test_size
     adj = sp.csr_matrix(
         (weight, (row, col)), shape=(node_size, node_size))
+    
+    skip = True
+    nodes = []
+    edges = []
+    for item in weighted_edges:
+        skip = not skip
+        if skip:
+            continue
+        if not ([item[1]] in nodes):
+            nodes.append([item[1]])
+        edges.append([item[1],item[2],item[0]])
+    
+    with open("data/output/"+dataset+"_nodes.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(nodes)
+        
+    with open("data/output/"+dataset+"_edges.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(edges)
 
     # dump objects
     f = open("data/output/ind.{}.x".format(dataset), 'wb')
