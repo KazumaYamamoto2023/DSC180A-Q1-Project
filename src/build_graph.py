@@ -55,7 +55,7 @@ def build(dataset):
     for train_name in doc_train_list:
         train_id = doc_name_list.index(train_name)
         train_ids.append(train_id)
-    print(train_ids)
+    #print(train_ids)
     random.shuffle(train_ids)
 
     # partial labeled data
@@ -70,7 +70,7 @@ def build(dataset):
     for test_name in doc_test_list:
         test_id = doc_name_list.index(test_name)
         test_ids.append(test_id)
-    print(test_ids)
+    #print(test_ids)
     random.shuffle(test_ids)
 
     test_ids_str = '\n'.join(str(index) for index in test_ids)
@@ -79,8 +79,8 @@ def build(dataset):
     f.close()
 
     ids = train_ids + test_ids
-    print(ids)
-    print(len(ids))
+    #print(ids)
+    #print(len(ids))
 
     shuffle_doc_name_list = []
     shuffle_doc_words_list = []
@@ -254,7 +254,7 @@ def build(dataset):
         one_hot[label_index] = 1
         y.append(one_hot)
     y = np.array(y)
-    print(y)
+    #print(y)
 
     # tx: feature vectors of test docs, no initial features
     test_size = len(test_ids)
@@ -292,7 +292,7 @@ def build(dataset):
         one_hot[label_index] = 1
         ty.append(one_hot)
     ty = np.array(ty)
-    print(ty)
+    #print(ty)
 
     # allx: the the feature vectors of both labeled and unlabeled training instances
     # (a superset of x)
@@ -495,7 +495,7 @@ def build(dataset):
     skip = True
     nodes = []
     edges = []
-    for item in weight:
+    for item in weighted_edges:
         skip = not skip
         if skip:
             continue
