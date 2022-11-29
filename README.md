@@ -4,7 +4,6 @@ The replication of Text GCN from:
 
 Liang Yao, Chengsheng Mao, Yuan Luo. "Graph Convolutional Networks for Text Classification." In 33rd AAAI Conference on Artificial Intelligence (AAAI-19), 7370-7377
 
-
 ## Requirements
 
 Python 2.7 or 3.6

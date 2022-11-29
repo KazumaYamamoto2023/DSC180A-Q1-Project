@@ -13,8 +13,8 @@ def main():
     if dataset not in datasets:
         sys.exit("wrong dataset name")
 
-    # Step 1: prepare dataset
-    remove_words.prepare(dataset)
+    # Step 1: clean dataset
+    remove_words.clean(dataset)
 
     # Step 2: build network graph
     build_graph.build(dataset)

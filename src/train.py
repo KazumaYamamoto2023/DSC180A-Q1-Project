@@ -7,6 +7,7 @@ import tensorflow as tf
 from sklearn import metrics
 from utils import *
 from models import GCN, MLP
+from visualize import plot_loss
 import random
 import os
 import sys
@@ -96,6 +97,11 @@ def train(dataset):
     sess.run(tf.global_variables_initializer())
 
     cost_val = []
+    epochs = []
+    train_losses = []
+    train_accs = []
+    val_losses = []
+    val_accs = []
 
     # Train model
     for epoch in range(FLAGS.epochs):
@@ -120,10 +126,17 @@ def train(dataset):
                 outs[2]), "val_loss=", "{:.5f}".format(cost),
             "val_acc=", "{:.5f}".format(acc), "time=", "{:.5f}".format(time.time() - t))
 
+        epochs.append(epoch + 1)
+        train_losses.append(outs[1])
+        train_accs.append(outs[2])
+        val_losses.append(cost)
+        val_accs.append(acc)
+
         if epoch > FLAGS.early_stopping and cost_val[-1] > np.mean(cost_val[-(FLAGS.early_stopping+1):-1]):
             print("Early stopping...")
             break
 
+    plot_loss(dataset, epochs, train_losses, train_accs, val_losses, val_accs)
     print("Optimization Finished!")
 
     # Testing

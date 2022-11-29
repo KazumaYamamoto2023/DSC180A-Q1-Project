@@ -3,6 +3,21 @@ from sklearn.manifold import TSNE
 from matplotlib import pyplot as plt
 import numpy as np
 
+def plot_loss(dataset, epoch_lst, train_losses, train_accs, val_losses, val_accs):
+    pdf = PdfPages('data/visualizations/' + dataset + '_train_val_curve.pdf')
+    plt.plot(epoch_lst, train_losses, label = "training loss")
+    plt.plot(epoch_lst, train_accs, label = "training accuracy")
+    plt.plot(epoch_lst, val_losses, label = "validation loss")
+    plt.plot(epoch_lst, val_accs, label = "validation accuracy")
+
+    plt.legend(ncol=2,  )
+    plt.legend(ncol=5,loc='upper center',bbox_to_anchor=(0.48, -0.08),fontsize=11)
+    plt.xlabel("Epoch")
+    plt.tight_layout()
+    pdf.savefig()
+    plt.show()
+    pdf.close()
+
 def plot(dataset):
     f = open('data/output/' + dataset + '_shuffle.txt', 'r')
     lines = f.readlines()
