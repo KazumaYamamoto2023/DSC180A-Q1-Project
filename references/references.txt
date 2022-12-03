@@ -1,3 +1,6 @@
+Liang Yao, Chengsheng Mao, Yuan Luo. 2018. Graph Convolutional Networks for Text Classification.
+https://arxiv.org/abs/1809.05679v3, https://github.com/yao8839836/text_gcn 
+
 S. Greene and P. Resnik. 2009. More than words: Syn- tactic packaging and implicit sentiment. In NAACL.
 https://aclanthology.org/N09-1057.pdf
 
@@ -22,3 +25,13 @@ Clickbait Dataset Reference:
   year={2016},
   organization={IEEE}
 }
+
+Parker Erickson. Graph Convolutional Neural Networks for Movie Recommendation
+https://colab.research.google.com/drive/11tcL4KXXwY__TmUUTjOf6InFQMC-VsG6#scrollTo=_BNqh7fz0486
+
+Ken Gu. A PyTorch implementation of "Graph Convolutional Networks for Text Classification."
+https://github.com/codeKgu/Text-GCN 
+
+PyTorch implementation of "Graph Convolutional Networks for Text Classification. Yao et al. AAAI2019."
+https://github.com/iworldtong/text_gcn.pytorch 
+
