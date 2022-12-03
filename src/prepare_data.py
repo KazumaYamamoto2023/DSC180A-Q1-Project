@@ -1,11 +1,10 @@
 #!/usr/bin/python
 #-*-coding:utf-8-*-
 
-dataset_name = 'own'
-sentences = ['Would you like a plain sweater or something else?​', 'Great. We have some very nice wool slacks over here. Would you like to take a look?']
-labels = ['Yes' , 'No' ]
+dataset_name = 'new_dataset'
+sentences = ['This is sentence 1.​', 'This is sentence 2.']
+labels = ['Yes' , 'No']
 train_or_test_list = ['train', 'test']
-
 
 meta_data_list = []
 

@@ -5,17 +5,16 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 
 # global unique layer ID dictionary for layer name assignment
-_LAYER_UIDS = {}
-
+layeruids_dct = {}
 
 def get_layer_uid(layer_name=''):
     """Helper function, assigns unique layer IDs."""
-    if layer_name not in _LAYER_UIDS:
-        _LAYER_UIDS[layer_name] = 1
+    if layer_name not in layeruids_dct:
+        layeruids_dct[layer_name] = 1
         return 1
     else:
-        _LAYER_UIDS[layer_name] += 1
-        return _LAYER_UIDS[layer_name]
+        layeruids_dct[layer_name] += 1
+        return layeruids_dct[layer_name]
 
 
 def sparse_dropout(x, keep_prob, noise_shape):

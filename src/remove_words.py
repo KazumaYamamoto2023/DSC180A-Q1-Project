@@ -11,19 +11,13 @@ sys.path.insert(0, cwd)
 
 
 def clean(dataset):
+    # using nltk to clean stopwords
     num = 5
     if dataset == 'test':
         num = 1
     
     nltk.download('stopwords')
     stop_words = set(stopwords.words('english'))
-    print(stop_words)
-
-    # Read Word Vectors
-    # word_vector_file = 'data/glove.6B/glove.6B.200d.txt'
-    # vocab, embd, word_vector_map = loadWord2Vec(word_vector_file)
-    # word_embeddings_dim = len(embd[0])
-    # dataset = '20ng'
 
     doc_content_list = []
     if dataset == 'test':
@@ -34,7 +28,6 @@ def clean(dataset):
     for line in f.readlines():
         doc_content_list.append(line.strip().decode('latin1'))
     f.close()
-
 
     word_freq = {}  # to remove rare words
 
@@ -70,11 +63,9 @@ def clean(dataset):
         f = open('test/testdata/corpus/' + dataset + '.clean.txt', 'rb')
     else:
         f = open('data/corpus/' + dataset + '.clean.txt', 'w')
-    #f = open('data/wiki_long_abstracts_en_text.clean.txt', 'w')
     f.write(clean_corpus_str)
     f.close()
 
-    #dataset = '20ng'
     min_len = 10000
     aver_len = 0
     max_len = 0 
@@ -83,7 +74,7 @@ def clean(dataset):
         f = open('test/testdata/corpus/' + dataset + '.clean.txt', 'rb')
     else:
         f = open('data/corpus/' + dataset + '.clean.txt', 'r')
-    #f = open('data/wiki_long_abstracts_en_text.txt', 'r')
+
     lines = f.readlines()
     for line in lines:
         line = line.strip()

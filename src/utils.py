@@ -6,6 +6,11 @@ from scipy.sparse.linalg.eigen.arpack import eigsh
 import sys
 import re
 
+def sample_mask(idx, l):
+    """Create mask."""
+    mask = np.zeros(l)
+    mask[idx] = 1
+    return np.array(mask, dtype=np.bool)
 
 def parse_index_file(filename):
     """Parse index file."""
@@ -13,14 +18,6 @@ def parse_index_file(filename):
     for line in open(filename):
         index.append(int(line.strip()))
     return index
-
-
-def sample_mask(idx, l):
-    """Create mask."""
-    mask = np.zeros(l)
-    mask[idx] = 1
-    return np.array(mask, dtype=np.bool)
-
 
 def load_data(dataset_str):
     """
@@ -53,25 +50,6 @@ def load_data(dataset_str):
         "data/output/ind.{}.test.index".format(dataset_str))
     test_idx_range = np.sort(test_idx_reorder)
     print(x.shape, y.shape, tx.shape, ty.shape, allx.shape, ally.shape)
-
-    # training nodes are training docs, no initial features
-    # print("x: ", x)
-    # test nodes are training docs, no initial features
-    # print("tx: ", tx)
-    # both labeled and unlabeled training instances are training docs and words
-    # print("allx: ", allx)
-    # training labels are training doc labels
-    # print("y: ", y)
-    # test labels are test doc labels
-    # print("ty: ", ty)
-    # ally are labels for labels for allx, some will not have labels, i.e., all 0
-    # print("ally: \n")
-    # for i in ally:
-    # if(sum(i) == 0):
-    # print(i)
-    # graph edge weight is the word co-occurence or doc word frequency
-    # no need to build map, directly build csr_matrix
-    # print('graph : ', graph)
 
     if dataset_str == 'citeseer':
         # Fix citeseer dataset (there are some isolated nodes in the graph)
