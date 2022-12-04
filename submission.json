@@ -1,4 +1,4 @@
 {
-    "dockerhub-id": "kazumayamamoto/dsc180a-q1-project:latest",
+    "dockerhub-id": "kazumayamamoto/dsc180a-q1-project:latest -s",
     "build-script": "python run.py test"
 }
