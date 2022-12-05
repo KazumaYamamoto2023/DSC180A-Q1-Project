@@ -8,7 +8,7 @@ In this project, we utilize Text GCN to detect whether a news article's headline
 
 ## Requirements
 
-Please make sure to launch the Docker image through "launch-scipy-ml.sh -i srgelinas/dsc180a_m5 -s"
+Please make sure to launch the Docker image through `launch-scipy-ml.sh -i srgelinas/dsc180a_m5 -s`
 
 ## Reproducing Results
 
@@ -16,7 +16,7 @@ Run `python run.py test` to test Text GCN on a small subset of the `clickbait` d
 
 Change `test` in the above command line to your datafile name of choice (e.g. `clickbait`) when producing results for other datasets.
 
-The `clickbait` dataset is available at https://drive.google.com/file/d/1Og_EdQSQj_dzYp9ggmdjbdL_X3Q3eIE8/view?usp=sharing.
+The `clickbait` dataset is available [here](https://drive.google.com/file/d/1Og_EdQSQj_dzYp9ggmdjbdL_X3Q3eIE8/view?usp=sharing).
 
 ## Example input data
 
