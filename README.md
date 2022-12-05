@@ -6,20 +6,18 @@ Liang Yao, Chengsheng Mao, Yuan Luo. "Graph Convolutional Networks for Text Clas
 
 ## Requirements
 
-Python 2.7 or 3.6
-
-Tensorflow >= 1.4.0
+Please make sure to launch the Docker image through "launch-scipy-ml.sh -i srgelinas/dsc180a_m5 -s"
 
 ## Reproducing Results
 
-Run `python run.py clickbait`
+Run `python run.py test`
 
-Change `clickbait` in the above command line to `20ng`, `R8`, `R52`, `ohsumed` and `mr` when producing results for other datasets.
+Change `clickbait` in the above command line to your datafile name of choice when producing results for other datasets.
 
 ## Example input data
 
-1. `/data/clickbait.txt` indicates headline names, training/test split, headline labels. Each line is for a headline.
+1. `/test/testdata/test.txt` indicates headline names, training/test split, headline labels. Each line is for a headline.
 
-2. `/data/corpus/clickbait.txt` contains raw text of each headline, each line is for the corresponding line in `/data/clickbait.txt`
+2. `/data/corpus/test.txt` contains raw text of each headline, each line is for the corresponding line in `/data/test.txt`
 
 3. `prepare_data.py` is an example for preparing your own data, note that '\n' is removed in your documents or sentences.
