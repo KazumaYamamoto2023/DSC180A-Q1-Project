@@ -20,10 +20,7 @@ def clean(dataset):
     stop_words = set(stopwords.words('english'))
 
     doc_content_list = []
-    if dataset == 'test':
-        f = open('test/testdata/corpus/' + dataset + '.txt', 'rb')
-    else:
-        f = open('data/corpus/' + dataset + '.txt', 'rb')
+    f = open('data/corpus/' + dataset + '.txt', 'rb')
     # f = open('data/wiki_long_abstracts_en_text.txt', 'r')
     for line in f.readlines():
         doc_content_list.append(line.strip().decode('latin1'))
@@ -49,7 +46,7 @@ def clean(dataset):
             # word not in stop_words and word_freq[word] >= 5
             if dataset == 'mr':
                 doc_words.append(word)
-            elif word not in stop_words and word_freq[word] >= 5:
+            elif word not in stop_words and word_freq[word] >= num:
                 doc_words.append(word)
 
         doc_str = ' '.join(doc_words).strip()
@@ -59,10 +56,7 @@ def clean(dataset):
 
     clean_corpus_str = '\n'.join(clean_docs)
 
-    if dataset == 'test':
-        f = open('test/testdata/corpus/' + dataset + '.clean.txt', 'rb')
-    else:
-        f = open('data/corpus/' + dataset + '.clean.txt', 'w')
+    f = open('data/corpus/' + dataset + '.clean.txt', 'w')
     f.write(clean_corpus_str)
     f.close()
 
@@ -70,11 +64,8 @@ def clean(dataset):
     aver_len = 0
     max_len = 0 
 
-    if dataset == 'test':
-        f = open('test/testdata/corpus/' + dataset + '.clean.txt', 'rb')
-    else:
-        f = open('data/corpus/' + dataset + '.clean.txt', 'r')
 
+    f = open('data/corpus/' + dataset + '.clean.txt', 'r')
     lines = f.readlines()
     for line in lines:
         line = line.strip()

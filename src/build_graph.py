@@ -23,7 +23,10 @@ def build(dataset):
     doc_test_list = []
     doc_to_y = {}
 
-    f = open('data/' + dataset + '.txt', 'r')
+    if dataset == 'test':
+        f = open('test/testdata/' + dataset + '.txt', 'r')
+    else:
+        f = open('data/' + dataset + '.txt', 'r')
     lines = f.readlines()
     for line in lines:
         doc_name_list.append(line.strip())
@@ -57,7 +60,6 @@ def build(dataset):
     for test_name in doc_test_list:
         test_id = doc_name_list.index(test_name)
         test_ids.append(test_id)
-    #print(test_ids)
     random.shuffle(test_ids)
 
     test_ids_str = '\n'.join(str(index) for index in test_ids)
@@ -66,6 +68,8 @@ def build(dataset):
     f.close()
 
     ids = train_ids + test_ids
+    print(ids)
+    print(len(ids))
 
     shuffle_doc_name_list = []
     shuffle_doc_words_list = []

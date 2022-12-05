@@ -5,7 +5,7 @@ import numpy as np
 
 def plot_loss(dataset, epoch_lst, train_losses, train_accs, val_losses, val_accs):
     #create plot
-    pdf = PdfPages('data/visualizations/' + dataset + '_train_val_curve.pdf')
+    #pdf = PdfPages('data/visualizations/' + dataset + '_train_val_curve.pdf')
     plt.plot(epoch_lst, train_losses, label = "training loss")
     plt.plot(epoch_lst, train_accs, label = "training accuracy")
     plt.plot(epoch_lst, val_losses, label = "validation loss")
@@ -14,9 +14,11 @@ def plot_loss(dataset, epoch_lst, train_losses, train_accs, val_losses, val_accs
     plt.legend(ncol=5,loc='upper center',bbox_to_anchor=(0.48, -0.08),fontsize=11)
     plt.xlabel("Epoch")
     plt.tight_layout()
-    pdf.savefig()
-    plt.show()
-    pdf.close()
+    #pdf.savefig()
+    plt.savefig('data/visualizations/' + dataset + '_train_val_curve.png')
+    #plt.show()
+    #pdf.close()
+    plt.clf()
 
 def plot(dataset):
     f = open('data/output/' + dataset + '_shuffle.txt', 'r')
@@ -46,7 +48,7 @@ def plot(dataset):
     label = np.array(labels)
 
     fea = TSNE(n_components=2).fit_transform(docs)
-    pdf = PdfPages('data/visualizations/' + dataset + '_gcn_doc_test_1st_layer.pdf')
+    #pdf = PdfPages('data/visualizations/' + dataset + '_gcn_doc_test_1st_layer.pdf')
     cls = np.unique(label)
 
     # cls=range(10)
@@ -60,10 +62,12 @@ def plot(dataset):
     plt.legend(ncol=5,loc='upper center',bbox_to_anchor=(0.48, -0.08),fontsize=11)
     # plt.ylim([-20,35])
     # plt.title(md_file)
-    plt.tight_layout()
-    pdf.savefig()
-    plt.show()
-    pdf.close()
+    #plt.tight_layout()
+    #pdf.savefig()
+    plt.savefig('data/visualizations/' + dataset + '_gcn_doc_test_1st_layer.png')
+    #plt.show()
+    #pdf.close()
+    plt.clf()
 
 def plot_words(dataset):
     f = open('data/output/' + dataset + '_word_vectors.txt', 'r')
@@ -89,7 +93,7 @@ def plot_words(dataset):
     label = np.array(labels)
 
     fea = TSNE(n_components=2).fit_transform(docs)
-    pdf = PdfPages('data/visualizations/' + dataset + '_word_1st_layer.pdf')
+    #pdf = PdfPages('data/visualizations/' + dataset + '_word_1st_layer.pdf')
     cls = np.unique(label)
 
     # cls=range(10)
@@ -103,7 +107,9 @@ def plot_words(dataset):
     plt.legend(ncol=5,loc='upper center',bbox_to_anchor=(0.48, -0.08),fontsize=11)
     # plt.ylim([-20,35])
     # plt.title(md_file)
-    plt.tight_layout()
-    pdf.savefig()
-    plt.show()
-    pdf.close()
+    #plt.tight_layout()
+    #pdf.savefig()
+    plt.savefig('data/visualizations/' + dataset + '_word_1st_layer.png')
+    #plt.show()
+    #pdf.close()
+    plt.clf()
