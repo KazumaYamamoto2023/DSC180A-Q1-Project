@@ -1,13 +1,13 @@
 # reproducing results:
 
-from src import remove_words, build_graph, train, visualize, visualize_words
+from src import remove_words, build_graph, train, visualize
 import sys
 
 def main():
     if len(sys.argv) != 2:
 	    sys.exit("Use: python run.py <dataset>")
 
-    datasets = ['20ng', 'R8', 'R52', 'ohsumed', 'mr', 'clickbait', 'test']
+    datasets = ['clickbait', 'test']
     dataset = sys.argv[1]
 
     if dataset not in datasets:
@@ -24,7 +24,7 @@ def main():
 
     # Step 4: visualize results
     visualize.plot(dataset)
-    visualize_words.plot(dataset)
+    visualize.plot_words(dataset)
 
 if __name__ == "__main__":
     main()
