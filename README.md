@@ -21,3 +21,5 @@ Change `clickbait` in the above command line to your datafile name of choice whe
 2. `/data/corpus/test.txt` contains raw text of each headline, each line is for the corresponding line in `/data/test.txt`
 
 3. `prepare_data.py` is an example for preparing your own data, note that '\n' is removed in your documents or sentences.
+
+Data is available at https://drive.google.com/file/d/1Og_EdQSQj_dzYp9ggmdjbdL_X3Q3eIE8/view?usp=sharing
